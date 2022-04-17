@@ -1,6 +1,13 @@
 {
-    "manifest_version": 3,
-    "name": "Interface validation tool",
-    "version": "0.1",
-    "description": "Interface validation tool for university project."
+  "manifest_version": 3,
+
+  "name": "Interface validation tool",
+  "version": "0.1",
+  "description": "Interface validation tool for university project.",
+
+  "permissions": ["storage", "activeTab", "scripting", "debugger"],
+
+  "action": {
+    "default_popup": "src/user_interface/popup/popup.html"
+  }
 }
