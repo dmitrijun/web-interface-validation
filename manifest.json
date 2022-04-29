@@ -15,5 +15,8 @@
       "matches": ["<all_urls>"],
       "js": ["src/content_scripts/click_listener.js"]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "src/background/background.js"
+  }
 }
