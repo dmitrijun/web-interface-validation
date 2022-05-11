@@ -59,3 +59,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
   return true;
 });
+
+/*
+  Function for extension initial setup
+*/
+chrome.runtime.onInstalled.addListener((details) => {
+  chrome.storage.local.set(
+    {
+      report: {},
+      settings: {
+        // TODO: edit settings
+      },
+      state: {},
+    },
+    () => {}
+  );
+});
