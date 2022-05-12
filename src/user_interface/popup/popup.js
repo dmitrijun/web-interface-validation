@@ -1,4 +1,5 @@
 const IS_WORKING_STATE = "IS_WORKING_STATE";
+const SHIP_REPORT = "SHIP_REPORT";
 
 // Changes IS_WORKING_STATE to opposite
 function toggleClickInspector() {
@@ -28,7 +29,6 @@ document
     toggleClickInspector();
   });
 
-
 // Updating Working status title according to state
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (changes.hasOwnProperty(IS_WORKING_STATE)) {
@@ -41,10 +41,16 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
   }
 });
 
-
-// Initial setup 
+// Initial setup
 chrome.storage.local.get([IS_WORKING_STATE], (state) => {
   document.getElementById("workingStatus").innerText = state[IS_WORKING_STATE]
     ? "Working"
     : "Not Working";
+});
+
+// test function, will be removed
+document.getElementById("sendReport").addEventListener("click", (event) => {
+  chrome.runtime.sendMessage({ messageType: SHIP_REPORT }, function (response) {
+    console.log(response.farewell);
+  });
 });
