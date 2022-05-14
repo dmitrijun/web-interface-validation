@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head><title>Interface validation tool Options</title></head>
-<body>
-
-<script src="options.js"></script>
-<div>
-  <div>
-    <b>Endpoint:</b>
-    <input type="text" id="endpoint">
-  </div>
-  <div>
-    <button id="saveButton">Save</button>
-  </div>
-</div>
-</body>
+  <head>
+    <title>Interface validation tool Options</title>
+  </head>
+  <body>
+    <script src="options.js"></script>
+    <div>
+      <div>
+        <b>Endpoint:</b>
+        <input type="text" id="endpoint" />
+      </div>
+      <div>
+        <label>
+          <b>Save full XPath TODO</b>
+          <input type="checkbox" id="fullXPath" />
+        </label>
+      </div>
+      <div>
+        <label>
+          <b>Save user actions history TODO</b>
+          <input type="checkbox" id="saveActions" />
+        </label>
+      </div>
+      <div>
+        <label>
+          <b>Save element coordinates instead of XPath TODO</b>
+          <input type="checkbox" id="saveCoordinates" />
+        </label>
+      </div>
+      <div>
+        <button id="saveButton">Save</button>
+      </div>
+    </div>
+  </body>
 </html>
