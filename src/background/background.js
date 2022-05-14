@@ -130,8 +130,10 @@ chrome.runtime.onInstalled.addListener((details) => {
     {
       report: {},
       settings: {
-        // TODO: edit settings
         endpoint: "google.com",
+        fullXPath: false,
+        saveActions: false,
+        saveCoordinates: false,
       },
       state: {},
     },
