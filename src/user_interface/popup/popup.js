@@ -3,22 +3,9 @@ const SHIP_REPORT = "SHIP_REPORT";
 
 // Changes IS_WORKING_STATE to opposite
 function toggleClickInspector() {
-  chrome.storage.local.get([IS_WORKING_STATE], (state) => {
-    if (state[IS_WORKING_STATE]) {
-      console.debug(
-        `Toggling isWorking state from ${state[IS_WORKING_STATE]} to ${false}`
-      );
-      chrome.storage.local.set({ IS_WORKING_STATE: false }, () => {
-        console.debug(`Successfully updated isWorking state to ${false}`);
-      });
-    } else {
-      console.debug(
-        `Toggling isWorking state from ${state[IS_WORKING_STATE]} to ${true}`
-      );
-      chrome.storage.local.set({ IS_WORKING_STATE: true }, () => {
-        console.debug(`Successfully updated isWorking state to ${true}`);
-      });
-    }
+  chrome.storage.local.get(["state"], (result) => {
+    result.state[IS_WORKING_STATE] = !result.state[IS_WORKING_STATE];
+    chrome.storage.local.set({ state: result.state }, () => {});
   });
 }
 
@@ -31,19 +18,19 @@ document
 
 // Updating Working status title according to state
 chrome.storage.onChanged.addListener((changes, namespace) => {
-  if (changes.hasOwnProperty(IS_WORKING_STATE)) {
-    console.log(changes[IS_WORKING_STATE].newValue);
-    if (changes[IS_WORKING_STATE].newValue) {
+    console.log(changes.state.newValue[IS_WORKING_STATE]);
+    if (changes.state.newValue[IS_WORKING_STATE]) {
       document.getElementById("workingStatus").innerText = "Working";
     } else {
       document.getElementById("workingStatus").innerText = "Not Working";
     }
-  }
 });
 
 // Initial setup
-chrome.storage.local.get([IS_WORKING_STATE], (state) => {
-  document.getElementById("workingStatus").innerText = state[IS_WORKING_STATE]
+chrome.storage.local.get(["state"], (result) => {
+  document.getElementById("workingStatus").innerText = result.state[
+    IS_WORKING_STATE
+  ]
     ? "Working"
     : "Not Working";
 });

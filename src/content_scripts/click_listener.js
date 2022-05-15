@@ -53,12 +53,9 @@ function onClickCallback(event) {
 }
 
 chrome.storage.onChanged.addListener((changes, namespace) => {
-  if (changes.hasOwnProperty(IS_WORKING_STATE)) {
-    console.log(changes[IS_WORKING_STATE].newValue);
-    if (changes[IS_WORKING_STATE].newValue) {
-      document.addEventListener("click", onClickCallback, true);
-    } else {
-      document.removeEventListener("click", onClickCallback, true);
-    }
+  if (changes.state.newValue[IS_WORKING_STATE]) {
+    document.addEventListener("click", onClickCallback, true);
+  } else {
+    document.removeEventListener("click", onClickCallback, true);
   }
 });
