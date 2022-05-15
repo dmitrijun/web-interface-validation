@@ -135,7 +135,9 @@ chrome.runtime.onInstalled.addListener((details) => {
         saveActions: false,
         saveCoordinates: false,
       },
-      state: {},
+      state: {
+        IS_WORKING_STATE: false,
+      },
     },
     () => {}
   );
