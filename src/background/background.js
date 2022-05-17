@@ -54,9 +54,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   }
 
   // Ensuring that we got message from tab
-  //   if (sender.tab) {
-  parseNewReport(sender.url, request.report);
-  //   }
+  if (sender.tab) {
+    parseNewReport(sender.tab.url, request.report);
+  }
 
   return true;
 });
@@ -122,14 +122,20 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   return true;
 });
 
-chrome.tabs.onActivated.addListener(function(activeInfo) {
+chrome.tabs.onActivated.addListener(function (activeInfo) {
   // tab changed, setting active state to false
   chrome.storage.local.get(["state"], (result) => {
     result.state.IS_WORKING_STATE = false;
-    chrome.storage.local.set({state: result.state}, ()=>{
-      
-    })
-  })
+    chrome.storage.local.set({ state: result.state }, () => {});
+  });
+});
+
+chrome.tabs.onUpdated.addListener(function (activeInfo) {
+  // tab changed, setting active state to false
+  chrome.storage.local.get(["state"], (result) => {
+    result.state.IS_WORKING_STATE = false;
+    chrome.storage.local.set({ state: result.state }, () => {});
+  });
 });
 
 /*
