@@ -54,20 +54,94 @@ function submitReportForm(event) {
 function createDialog() {
   const modalContent = `<style>
   .modal-content {
-      background-color: white;
+    position: relative;
+    background-color: Gainsboro;
+    position: fixed;
+    left: 10px;
+    top: 20px;
+    transform: translate(0%, 0%);
+    border: 1px solid black;
+    box-shadow: 10px 5px 5px 1px DimGray;
+    width: 350px;
+    height: 300px;
+    font-size: 70%;
+    //font-size: 20px;
+    //text-align: center;
+    font-weight: lighter;
+    font-family: Arial;
+    position: static;
   }
+
+  label {
+    width: 200px; /* Ширина */
+    text-align: left; /* Выравниваем по правому краю */
+    float: left; /* Выстраиваем элементы рядом */
+    margin-left: 10px !important; /* Расстояние от текста до текстового поля */
+    line-height: 20px; /* Выравниваем по высоте */
+  }
+
+  .main_input {
+    display: block;
+    position: relative;
+    width:70%;
+    height: 27px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2;
+    color: #212529;
+    margin-left: 10px;
+    background-color: white !important;
+    background-clip: padding-box;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .submit-button {
+    background-color: white !important;
+    position: relative;
+    left: 10px;
+    top: 20px;
+    transform: translate(0%, 0%);
+    border: 1px solid black;
+    box-shadow: 10px 5px 5px 1px DimGray;
+    width: 100px;
+    height: 30px;
+    font-size: 70%;
+    //font-size: 20px;
+    //text-align: center;
+    //font-weight: lighter;
+    font-family: Arial;
+    position: static;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    margin-left: 10px;
+  }
+
+  .elName-style {
+    position: static;
+    left: 10px;
+    top: 20px;
+    margin-left: 10px !important;
+    font-family: Arial;    
+  }
+
+  .close {
+    font-size: 30px;
+  }
+
 </style>
 <div class="modal-content">
-<span class="close" id="closeDialog">&times;</span>
+<span class="close" id="closeDialog" class="closeClass">&times;</span>
 <form id="elementSelectionForm">
-  <label for="elName">Name</label><br />
-  <input type="text" id="elName" /><br />
-  <label for="xpath">XPath</label><br />
-  <input type="text" id="xpath" value="" /><br />
-  <input type="submit" value="Save" />
+  <label for="elName" class="elName-style">Name</label><br />
+  <input type="text" id="elName" class="main_input" /><br />
+  <label for="xpath" class="elName-style">XPath</label><br />
+  <input type="text" id="xpath" value="" class="main_input" /><br />
+  <input type="submit" value="Save" class="submit-button" />
 </form>
 </div>
-
 `;
 
   let modal = document.createElement("dialog");
@@ -78,13 +152,16 @@ function createDialog() {
   modal.style.display = "none";
   modal.style.position = "fixed";
   modal.style.zIndex = "100500";
-  // modal.style.paddingTop = "100px";
-  // modal.style.left = "0";
-  // modal.style.top = "0";
+  modal.style.fontSize = "27px";
+  modal.style.fontWeight = "bolder";
+  modal.style.color = "black";
+  //modal.style.paddingTop = "10px";
+  modal.style.left = "-3px";
+  modal.style.top = "-3px";
   modal.style.width = "100%";
   modal.style.height = "100%";
-  // modal.style.overflow = "auto";
-  modal.style.backgroundColor = "rgba(0,0,0,0.2)";
+  //modal.style.overflow = "auto";
+  modal.style.backgroundColor = "rgba(0,0,0,0.4)";
   document.body.insertBefore(modal, document.body.firstChild);
 }
 
