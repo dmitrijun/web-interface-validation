@@ -42,7 +42,7 @@ function submitReportForm(event) {
     report: {
       field: {
         field_name: event.target[0].value,
-        xpath: event.target[0].value,
+        xpath: event.target[1].value,
       },
     },
   };
