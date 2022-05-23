@@ -163,6 +163,16 @@ function createDialog() {
   //modal.style.overflow = "auto";
   modal.style.backgroundColor = "rgba(0,0,0,0.4)";
   document.body.insertBefore(modal, document.body.firstChild);
+
+  document.getElementById("closeDialog").onclick = closeDialog;
+  document
+    .getElementById("elementSelectionForm")
+    .addEventListener("submit", submitReportForm);
+  
+}
+
+function deleteDialog() {
+  document.getElementById("modalDialog").remove();
 }
 
 function turnOnInspect() {
@@ -180,6 +190,7 @@ function turnOffInspect() {
 }
 
 function openDialog(XPath) {
+  createDialog();
   const dialog = document.getElementById("modalDialog");
   dialog.style.display = "block";
 
@@ -190,8 +201,9 @@ function openDialog(XPath) {
 
 function closeDialog() {
   const dialog = document.getElementById("modalDialog");
-  dialog.style.display = "none";
+  // dialog.style.display = "none";
   turnOnInspect();
+  deleteDialog();
 }
 
 function onClickCallback(event) {
@@ -221,9 +233,3 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
     document.removeEventListener("click", onClickCallback, true);
   }
 });
-
-createDialog();
-document.getElementById("closeDialog").onclick = closeDialog;
-document
-  .getElementById("elementSelectionForm")
-  .addEventListener("submit", submitReportForm);
