@@ -61,6 +61,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   return true;
 });
 
+function cleanReport(){
+  chrome.storage.local.set({report: {}}, ()=>{
+    console.log("Report emptied");
+  })
+}
+
 function sendRequest(body) {
   chrome.storage.local.get(["settings"], (result) => {
     const endpoint = result.settings.endpoint;
@@ -78,8 +84,9 @@ function sendRequest(body) {
       .then((response) => {
         if (response.ok) {
           console.log("Report was sent successfully");
+          cleanReport();
         } else {
-          console.error("Error sending the report:", response.error());
+          console.error("Error sending the report:", response.status);
         }
       })
       .catch((err) => {
@@ -146,7 +153,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     {
       report: {},
       settings: {
-        endpoint: "google.com",
+        endpoint: "https://httpbin.org/post",
         fullXPath: false,
         saveActions: false,
         saveCoordinates: false,
