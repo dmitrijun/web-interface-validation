@@ -2,30 +2,74 @@
 <html>
   <head>
     <title>Interface validation tool Options</title>
+    <style type="text/css">
+      b { 
+        font-size: 160%; 
+        font-family: Verdana, Arial, Helvetica, sans-serif; 
+        color: black;
+      }
+      
+      .insertext {
+        height: 30px;
+        font-size: 1.5rem;
+        color: #212529;
+        border: 1px solid black;
+        box-shadow: 10px 5px 5px 1px DimGray;
+        border: 1px solid black;
+        border-radius: 0.25rem;
+      }
+
+      button {
+        background-color: White;
+        position: relative;
+        left: 10px;
+        top: 10px;
+        transform: translate(0%, 0%);
+        border: 1px solid black;
+        box-shadow: 10px 5px 5px 1px DimGray;
+        width: 100px;
+        height: 30px;
+        font-size: 100%;
+        font-family: Arial;
+        border: 1px solid black;
+        border-radius: 0.25rem;
+        margin-left: 10px;
+      }
+    
+      .checkb {
+        background-color: White;
+        left: 1px;
+        top: 10px;
+        border: 1px solid black;
+        width: 25px;
+        height: 25px;
+      }
+
+  </style>
   </head>
   <body>
     <script src="options.js"></script>
-    <div>
+    <div class="windowback">
       <div>
         <b>Endpoint:</b>
-        <input type="text" id="endpoint" />
+        <input type="text" id="endpoint" class="insertext" />
       </div>
       <div>
         <label>
           <b>Save full XPath TODO</b>
-          <input type="checkbox" id="fullXPath" />
+          <input type="checkbox" id="fullXPath" class="checkb" />
         </label>
       </div>
       <div>
         <label>
           <b>Save user actions history TODO</b>
-          <input type="checkbox" id="saveActions" />
+          <input type="checkbox" id="saveActions" class="checkb" />
         </label>
       </div>
       <div>
         <label>
           <b>Save element coordinates instead of XPath TODO</b>
-          <input type="checkbox" id="saveCoordinates" />
+          <input type="checkbox" id="saveCoordinates" class="checkb" />
         </label>
       </div>
       <div>
