@@ -42,7 +42,7 @@ function submitReportForm(event) {
     report: {
       field: {
         field_name: event.target[0].value,
-        xpath: event.target[1].value,
+        xpath: event.target[0].value,
       },
     },
   };
@@ -54,9 +54,8 @@ function submitReportForm(event) {
 function createDialog() {
   const modalContent = `<style>
   .modal-content {
-    position: relative;
-    background-color: Gainsboro;
     position: fixed;
+    background-color: Gainsboro;
     left: 10px;
     top: 20px;
     transform: translate(0%, 0%);
@@ -65,22 +64,29 @@ function createDialog() {
     width: 350px;
     height: 300px;
     font-size: 70%;
-    //font-size: 20px;
-    //text-align: center;
     font-weight: lighter;
     font-family: Arial;
-    position: static;
   }
 
-  label {
-    width: 200px; /* Ширина */
-    text-align: left; /* Выравниваем по правому краю */
-    float: left; /* Выстраиваем элементы рядом */
-    margin-left: 10px !important; /* Расстояние от текста до текстового поля */
-    line-height: 20px; /* Выравниваем по высоте */
+  .close {
+    position: relative;
+    left: 3px;
+    top: 3px;
+    font-size: 33px;
+  }
+
+  .elName-style {
+    position: relative;
+    left: 20px;
+    top: 2px;
+    //margin-left: 10px !important;
+    //margin-top: 10px;
+    font-family: Arial;    
   }
 
   .main_input {
+    //left: 10px;
+    //top: 30px;
     display: block;
     position: relative;
     width:70%;
@@ -91,18 +97,18 @@ function createDialog() {
     line-height: 2;
     color: #212529;
     margin-left: 10px;
+    margin-top: 25px;
     background-color: white !important;
     background-clip: padding-box;
     border: 1px solid black;
     border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    //transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-
   .submit-button {
     background-color: white !important;
     position: relative;
     left: 10px;
-    top: 20px;
+    top: 10px;
     transform: translate(0%, 0%);
     border: 1px solid black;
     box-shadow: 10px 5px 5px 1px DimGray;
@@ -113,24 +119,11 @@ function createDialog() {
     //text-align: center;
     //font-weight: lighter;
     font-family: Arial;
-    position: static;
     border: 1px solid black;
     border-radius: 0.25rem;
     margin-left: 10px;
   }
-
-  .elName-style {
-    position: static;
-    left: 10px;
-    top: 20px;
-    margin-left: 10px !important;
-    font-family: Arial;    
-  }
-
-  .close {
-    font-size: 30px;
-  }
-
+  
 </style>
 <div class="modal-content">
 <span class="close" id="closeDialog" class="closeClass">&times;</span>
