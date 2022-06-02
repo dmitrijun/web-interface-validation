@@ -45,6 +45,10 @@
         height: 25px;
       }
 
+      .toggle {
+        visibility: hidden;
+      }
+
   </style>
   </head>
   <body>
@@ -54,19 +58,19 @@
         <b>Endpoint:</b>
         <input type="text" id="endpoint" class="insertext" />
       </div>
-      <div>
+      <div class="toggle">
         <label>
           <b>Save full XPath TODO</b>
           <input type="checkbox" id="fullXPath" class="checkb" />
         </label>
       </div>
-      <div>
+      <div class="toggle">
         <label>
           <b>Save user actions history TODO</b>
           <input type="checkbox" id="saveActions" class="checkb" />
         </label>
       </div>
-      <div>
+      <div class="toggle">
         <label>
           <b>Save element coordinates instead of XPath TODO</b>
           <input type="checkbox" id="saveCoordinates" class="checkb" />
