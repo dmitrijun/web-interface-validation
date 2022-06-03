@@ -137,13 +137,13 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
   });
 });
 
-chrome.tabs.onUpdated.addListener(function (activeInfo) {
-  // tab changed, setting active state to false
-  chrome.storage.local.get(["state"], (result) => {
-    result.state.IS_WORKING_STATE = false;
-    chrome.storage.local.set({ state: result.state }, () => {});
-  });
-});
+// chrome.tabs.onUpdated.addListener(function (activeInfo) {
+//   // tab changed, setting active state to false
+//   chrome.storage.local.get(["state"], (result) => {
+//     result.state.IS_WORKING_STATE = false;
+//     chrome.storage.local.set({ state: result.state }, () => {});
+//   });
+// });
 
 /*
   Function for extension initial setup
